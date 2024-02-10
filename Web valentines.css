@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #87ceeb, #1e90ff);
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('img/stars.gif') repeat-y;
+  animation: starsFall 5s linear infinite;
+  z-index: 1;
+}
+
+.cat-img {
+  z-index: 2;
+}
+
+.title {
+  font-family: 'Protest Riot', cursive;
+  font-size: 24px;
+  color: #ff69b4;
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  font-family: 'Protest Riot', cursive;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.btn--yes {
+  background-color: #ff69b4;
+  color: white;
+}
+
+.btn--no {
+  background-color: #1e90ff;
+  color: white;
+}
+
+@keyframes starsFall {
+  to {
+    background-position: 0 100%;
+  }
+}
