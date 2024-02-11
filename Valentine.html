@@ -1,72 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #ffcccc;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to right, pink, purple);
+      font-family: Arial, sans-serif;
     }
 
     .container {
+      width: 80%;
+      max-width: 600px;
+      margin: 50px auto;
+      border: 10px solid white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .card {
+      position: relative;
+      height: 400px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .card-front {
       text-align: center;
-      padding: 50px;
     }
 
-    .heart {
+    .card-front h1 {
+      font-size: 50px;
+      color: pink;
+      margin-top: 100px;
+    }
+
+    .card-front img {
       width: 100px;
-      animation: heartbeat 1s infinite;
+      height: 100px;
+      animation: pulse 2s infinite;
     }
 
-    .title {
-      color: #ff0066;
-      font-size: 36px;
-      margin-top: 20px;
-    }
-
-    .message {
-      font-size: 18px;
-      margin-top: 20px;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% {
+    @keyframes pulse {
+      0% {
         transform: scale(1);
       }
       50% {
-        transform: scale(1.1);
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
       }
     }
+
+    .card-back {
+      background: pink;
+      transform: rotateY(180deg);
+    }
+
+    .card-back p {
+      font-size: 20px;
+      color: white;
+      margin: 20px;
+    }
+
+    .card-back img {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 40px;
+      border: none;
+      border-radius: 20px;
+      background: pink;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: purple;
+    }
   </style>
-  <title>Valentine's Day Special</title>
 </head>
 <body>
   <div class="container">
-    <img class="heart" src="heart.png" alt="Heart">
-    <h1 class="title">Happy Valentine's Day, My Love!</h1>
-    <p class="message">You are the sunshine that lights up my world. Your love is my greatest treasure. Wishing you a day filled with love and joy!</p>
+    <div class="card" id="card">
+      <div class="card-front">
+        <h1>Happy Valentine's Day!</h1>
+        <img src="https://cdn.iconscout.com/icon/free/png-256/heart-1767836-1502416.png" alt="Heart">
+        <button class="button" onclick="flipCard()">Open me</button>
+      </div>
+      <div class="card-back">
+        <p>Dear (Miranda),</p>
+        <p>You are the best thing that ever happened to me. You make me happy every day with your smile, your laugh, and your love. You are my soulmate and my best friend. I can't imagine my life without you.</p>
+        <p>I love you more than words can say. You are my everything.</p>
+        <p>Yours forever, (Daffa)</p>
+        <img src="https://cdn.iconscout.com/icon/free/png-256/kiss-1851568-1569285.png" alt="Kiss">
+      </div>
+    </div>
   </div>
+  <script>
+    function flipCard() {
+      var card = document.getElementById("card");
+      card.style.transform = "rotateY(180deg)";
+    }
+  </script>
 </body>
+
+<i class="fa fa-heart"></i>
+<i class="fa fa-heart"></i>
+<i class="fa fa-heart"></i>
+<i class="fa fa-heart"></i>
+<i class="fa fa-heart"></i>
 </html>
-</style>
-  <title>More Romantic Questions</title>
-</head>
-<body>
-  <div class="container">
-    <h1 class="question">Will you be my Valentine?</h1>
-    <img  src="pexels-kristina-paukshtite-704748.jpg " alt="Heart">
-    <h1 class="question">Do you like me?</h1>
-    <button class="option" onclick="handleOption('yes')">Yes</button>
-      <button class="option" onclick="handleOption('no')">No</button>
-    <h1 class="question">Can I steal a kiss from you?</h1>
-    <img class="heart" src="heart.png" alt="Heart">
-    <h1 class="question">Will you marry me?</h1>
-    <img class="heart" src="heart.png" alt="Heart">
-    <h1 class="question">Forever and always?</h1>
-    <img class="heart" src="heart.png" alt="Heart">
-    <p class="message">You are my everything, and I love you more with each passing day!</p>
-  </div>
-</body>
-</html>
+<head>
+  <style> @keyframes falling {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+
+.fa-heart {
+  position: absolute;
+  font-size: 30px;
+  color: pink;
+  z-index: -1; 
+}
+
+
+.fa-heart:nth-child(1) {
+  left: 10%;
+  animation: falling 5s linear infinite;
+}
+
+.fa-heart:nth-child(2) {
+  left: 30%;
+  animation: falling 4s linear infinite;
+  animation-delay: 1s;
+}
+
+.fa-heart:nth-child(3) {
+  left: 50%;
+  animation: falling 6s linear infinite;
+  animation-delay: 2s;
+}
+
+.fa-heart:nth-child(4) {
+  left: 70%;
+  animation: falling 3s linear infinite;
+  animation-delay: 3s;
+}
+
+.fa-heart:nth-child(5) {
+  left: 90%;
+  animation: falling 7s linear infinite;
+  animation-delay: 4s;
+}</style>
+
+
+
+
+
+  
